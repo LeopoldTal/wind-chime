@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { ActionContext } from '../ActionContext/ActionContext';
+import './InputListener.css';
 
 const LONG_PRESS_DURATION = 500; // TODO: make this configurable
 
@@ -78,7 +79,7 @@ export const InputListener: React.FunctionComponent = () => {
 	}, [endKeyPress]);
 
 	return (
-		<div className="input-listener">
+		<div className={`input-listener ${pressed ? 'input-listener-pressed' : ''}`}>
 			<img
 				alt={pressed ? 'press' : ''}
 				src="/chimes.png"

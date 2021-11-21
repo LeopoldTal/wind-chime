@@ -1,1 +1,12 @@
+.input-listener {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	padding: 2rem;
+	opacity: 0.2;
+}
 
+.input-listener-pressed {
+	opacity: 1;
+	transition: opacity 0.5s ease-in;
+}
