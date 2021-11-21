@@ -1,0 +1,15 @@
+.main-menu-screen {
+	padding: 0.5rem;
+	text-align: center;
+}
+
+.main-title {
+	margin: 2rem auto 1rem;
+	font-size: 4rem;
+	font-family: 'Snell Roundhand', 'Savoye LET', Zapfino, 'Apple Chancery', 'URW Chancery L', SignPainter, Gabriola, 'Segoe Script', 'Lucida Handwriting', 'Palatino Linotype', cursive;
+}
+
+.main-subtitle {
+	margin: 0 auto 2rem;
+	font-size: 1.7rem;
+}

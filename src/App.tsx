@@ -1,24 +1,14 @@
 import React from 'react';
-import './App.css';
+import { Route, Routes } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import { MainMenu } from './menus/MainMenu';
 
-const App: React.FunctionComponent = () => {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
-	);
-}
+const App: React.FunctionComponent = () => (
+	<BrowserRouter>
+		<Routes>
+			<Route path="/" element={<MainMenu />} />
+		</Routes>
+	</BrowserRouter>
+);
 
 export default App;

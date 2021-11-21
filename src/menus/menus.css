@@ -1,0 +1,24 @@
+.menu-list {
+	margin: 2rem;
+	padding: 0;
+}
+
+.menu-list-item {
+	list-style: none;
+	padding: 0;
+	margin: 1rem;
+	line-height: 1.8;
+}
+.menu-list-item-selected {
+	list-style-type: '⇨ ';
+	color: #eeff88;
+}
+
+a.menu-link {
+	color: white;
+	text-decoration: none;
+}
+.menu-list-item-selected a.menu-link {
+	color: #eeff88;
+	text-decoration: underline overline;
+}
