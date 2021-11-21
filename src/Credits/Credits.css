@@ -1,0 +1,11 @@
+.credits {
+	padding: 1rem;
+	text-align: center;
+}
+
+.credits dt {
+	font-weight: bold;
+}
+.credits dd {
+	margin: 0 0 1.5rem;
+}
