@@ -1,16 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { ActionContext } from '../ActionContext/ActionContext';
 
 const LONG_PRESS_DURATION = 500; // TODO: make this configurable
 
-type InputListenerProps = {
-	onShortPress: () => void;
-	onLongPress: () => void;
-};
+export const InputListener: React.FunctionComponent = () => {
+	const { onShortPress, onLongPress } = useContext(ActionContext);
 
-export const InputListener: React.FunctionComponent<InputListenerProps> = ({
-	onShortPress,
-	onLongPress
-}) => {
 	const [pressed, setPressed] = useState<string | null>(null);
 	const [longPressTimeout, setLongPressTimeout] = useState<number | null>(null);
 

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { InputListener } from '../InputListener/InputListener';
+import { ActionContext } from '../ActionContext/ActionContext';
 import './MainMenu.css';
 import './menus.css';
 
@@ -15,22 +15,23 @@ const MENU_LINKS: MenuRoute[] = [
 ];
 
 export const MainMenu: React.FunctionComponent = () => {
+	const { setActions } = useContext(ActionContext);
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const navigate = useNavigate();
 
-	const selectLink = (linkIndex: number) => {
-		setSelectedIndex(linkIndex);
+	const next = useCallback(() => {
+		setSelectedIndex((selectedIndex + 1) % MENU_LINKS.length);
 		// TODO: focus link
-	};
+	}, [selectedIndex, setSelectedIndex]);
 
-	const next = () => {
-		selectLink((selectedIndex + 1) % MENU_LINKS.length);
-	};
-
-	const openLink = () => {
+	const openLink = useCallback(() => {
 		const { to } = MENU_LINKS[selectedIndex];
 		navigate(to);
-	};
+	}, [selectedIndex, navigate]);
+
+	useEffect(() => {
+		setActions({ onShortPress: next, onLongPress: openLink });
+	}, [next, openLink, setActions]);
 
 	return (
 		<div className="main-menu-screen">
@@ -50,8 +51,6 @@ export const MainMenu: React.FunctionComponent = () => {
 					</li>
 				))}
 			</menu>
-			
-			<InputListener onShortPress={next} onLongPress={openLink} />
 		</div>
 	);
 };

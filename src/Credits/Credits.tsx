@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { InputListener } from '../InputListener/InputListener';
+import { ActionContext } from '../ActionContext/ActionContext';
 import './Credits.css';
 
 export const Credits: React.FunctionComponent = () => {
+	const { setActions } = useContext(ActionContext);
 	const navigate = useNavigate();
-	const back = () => navigate('/');
+	const back = useCallback(() => navigate('/'), [navigate]);
+
+	useEffect(() => {
+		setActions({ onShortPress: back, onLongPress: back });
+	}, [back, setActions]);
 
 	return (
 		<div className="credits">
@@ -29,8 +34,6 @@ export const Credits: React.FunctionComponent = () => {
 				<dt>Source code</dt>
 				<dd>TODO: repo link here</dd>
 			</dl>
-
-			<InputListener onShortPress={back} onLongPress={back} />
 		</div>
 	);
 };

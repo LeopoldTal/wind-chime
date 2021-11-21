@@ -1,4 +1,5 @@
 import { act, fireEvent, render } from '@testing-library/react';
+import { ActionContext } from '../ActionContext/ActionContext';
 import { InputListener } from './InputListener';
 
 describe('InputListener', () => {
@@ -14,8 +15,11 @@ describe('InputListener', () => {
 	it('listens to a short click', () => {
 		const onShortPress = jest.fn();
 		const onLongPress = jest.fn();
+		const setActions = jest.fn();
 		const { container } = render(
-			<InputListener onShortPress={onShortPress} onLongPress={onLongPress} />
+			<ActionContext.Provider value={{ onLongPress, onShortPress, setActions }}>
+				<InputListener />
+			</ActionContext.Provider>
 		);
 		fireEvent.mouseDown(container);
 		act(() => { jest.advanceTimersByTime(1); });
@@ -27,8 +31,11 @@ describe('InputListener', () => {
 	it('listens to a long click', () => {
 		const onShortPress = jest.fn();
 		const onLongPress = jest.fn();
+		const setActions = jest.fn();
 		const { container } = render(
-			<InputListener onShortPress={onShortPress} onLongPress={onLongPress} />
+			<ActionContext.Provider value={{ onLongPress, onShortPress, setActions }}>
+				<InputListener />
+			</ActionContext.Provider>
 		);
 		fireEvent.mouseDown(container);
 		act(() => { jest.advanceTimersByTime(3000); });
@@ -40,8 +47,11 @@ describe('InputListener', () => {
 	it('fires long-press handler even if press is ongoing', () => {
 		const onShortPress = jest.fn();
 		const onLongPress = jest.fn();
+		const setActions = jest.fn();
 		const { container } = render(
-			<InputListener onShortPress={onShortPress} onLongPress={onLongPress} />
+			<ActionContext.Provider value={{ onLongPress, onShortPress, setActions }}>
+				<InputListener />
+			</ActionContext.Provider>
 		);
 		fireEvent.mouseDown(container);
 		act(() => { jest.advanceTimersByTime(3000); });
@@ -52,8 +62,11 @@ describe('InputListener', () => {
 	it('listens to a short key press', () => {
 		const onShortPress = jest.fn();
 		const onLongPress = jest.fn();
+		const setActions = jest.fn();
 		const { container } = render(
-			<InputListener onShortPress={onShortPress} onLongPress={onLongPress} />
+			<ActionContext.Provider value={{ onLongPress, onShortPress, setActions }}>
+				<InputListener />
+			</ActionContext.Provider>
 		);
 		fireEvent.keyDown(container, { key: 'a' });
 		act(() => { jest.advanceTimersByTime(1); });
@@ -65,8 +78,11 @@ describe('InputListener', () => {
 	it('listens to a long key press', () => {
 		const onShortPress = jest.fn();
 		const onLongPress = jest.fn();
+		const setActions = jest.fn();
 		const { container } = render(
-			<InputListener onShortPress={onShortPress} onLongPress={onLongPress} />
+			<ActionContext.Provider value={{ onLongPress, onShortPress, setActions }}>
+				<InputListener />
+			</ActionContext.Provider>
 		);
 		fireEvent.keyDown(container, { key: 'a' });
 		act(() => { jest.advanceTimersByTime(3000); });
@@ -78,8 +94,11 @@ describe('InputListener', () => {
 	it('ignores other keys during press', () => {
 		const onShortPress = jest.fn();
 		const onLongPress = jest.fn();
+		const setActions = jest.fn();
 		const { container } = render(
-			<InputListener onShortPress={onShortPress} onLongPress={onLongPress} />
+			<ActionContext.Provider value={{ onLongPress, onShortPress, setActions }}>
+				<InputListener />
+			</ActionContext.Provider>
 		);
 		fireEvent.keyDown(container, { key: 'a' });
 		act(() => { jest.advanceTimersByTime(100); });
@@ -95,8 +114,11 @@ describe('InputListener', () => {
 	it('ignores clicks during press', () => {
 		const onShortPress = jest.fn();
 		const onLongPress = jest.fn();
+		const setActions = jest.fn();
 		const { container } = render(
-			<InputListener onShortPress={onShortPress} onLongPress={onLongPress} />
+			<ActionContext.Provider value={{ onLongPress, onShortPress, setActions }}>
+				<InputListener />
+			</ActionContext.Provider>
 		);
 		fireEvent.keyDown(container, { key: 'a' });
 		act(() => { jest.advanceTimersByTime(100); });
