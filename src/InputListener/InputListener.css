@@ -8,5 +8,5 @@
 
 .input-listener-pressed {
 	opacity: 1;
-	transition: opacity 0.5s ease-in;
+	transition: opacity 0.5s steps(4, jump-end);
 }
