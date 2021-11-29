@@ -14,11 +14,11 @@
 	color: #eeff88;
 }
 
-a.menu-link {
+.menu-link {
 	color: white;
 	text-decoration: none;
 }
-.menu-list-item-selected a.menu-link {
+.menu-list-item-selected .menu-link {
 	color: #eeff88;
 	text-decoration: underline overline;
 }

@@ -1,21 +1,29 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ActionContextProvider } from './ActionContext/ActionContext';
 import { Credits } from './Credits/Credits';
 import { Game } from './Game/Game';
 import { InputListener } from './InputListener/InputListener';
 import { MainMenu } from './menus/MainMenu';
+import { NavigationContext, NavigationContextProvider } from './NavigationContext';
 
 const App: React.FunctionComponent = () => (
 	<ActionContextProvider>
-		<BrowserRouter>
-			<Routes>
-				<Route path="/" element={<MainMenu />} />
-				<Route path="/play" element={<Game />} />
-				<Route path="/credits" element={<Credits />} />
-				<Route path="*" element={<MainMenu />} />
-			</Routes>
-		</BrowserRouter>
+		<NavigationContextProvider>
+			<NavigationContext.Consumer>
+				{({ page }) => {
+					switch (page) {
+						case 'MAIN_MENU':
+							return <MainMenu />;
+						case 'PLAY':
+							return <Game />;
+						case 'CREDITS':
+							return <Credits />;
+						default:
+							return <MainMenu />;
+					}
+				}}
+			</NavigationContext.Consumer>
+		</NavigationContextProvider>
 		<InputListener />
 	</ActionContextProvider>
 );

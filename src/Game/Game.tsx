@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ActionContext } from '../ActionContext/ActionContext';
+import { NavigationContext } from '../NavigationContext';
 import { playChime } from '../sound/sound-service';
 import { SoundPlayer } from '../sound/SoundPlayer';
 import { Ending, getFirstStep, getNextStep, isEnding, Phrase } from './game-script';
@@ -8,7 +8,7 @@ import './game.css';
 
 export const Game: React.FunctionComponent = () => {
 	const { setActions } = useContext(ActionContext);
-	const navigate = useNavigate();
+	const { navigate } = useContext(NavigationContext);
 	// keep all state together so we can batch async updates. TODO: is there a nicer way?
 	const [{ step, gameState, currentPhraseIndex }, setState] = useState({
 		...getFirstStep(),
@@ -43,7 +43,7 @@ export const Game: React.FunctionComponent = () => {
 
 	const pause = useCallback(() => {
 		if (isEnding(step)) {
-			navigate('/');
+			navigate('MAIN_MENU');
 		} else {
 			console.log('TODO: pause');
 		}

@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ActionContext } from '../ActionContext/ActionContext';
+import { NavigationContext } from '../NavigationContext';
 import './Credits.css';
 
 export const Credits: React.FunctionComponent = () => {
 	const { setActions } = useContext(ActionContext);
-	const navigate = useNavigate();
-	const back = useCallback(() => navigate('/'), [navigate]);
+	const { navigate } = useContext(NavigationContext);
+	const back = useCallback(() => navigate('MAIN_MENU'), [navigate]);
 
 	useEffect(() => {
 		setActions({ onShortPress: back, onLongPress: back });

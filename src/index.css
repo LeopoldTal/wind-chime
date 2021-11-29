@@ -9,7 +9,11 @@ body {
 	padding: 0;
 }
 
-a {
+a, button {
+	display: inline;
+	background: none;
+	border: none;
 	color: #eeff88;
 	text-decoration: underline;
+	font-size: 1rem;
 }
