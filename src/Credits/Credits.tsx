@@ -32,7 +32,9 @@ export const Credits: React.FunctionComponent = () => {
 				</dd>
 
 				<dt>Source code</dt>
-				<dd>TODO: repo link here</dd>
+				<dd>
+					<a href="https://github.com/LeopoldTal/wind-chime">Wind Chime on GitHub</a>
+				</dd>
 			</dl>
 		</div>
 	);
