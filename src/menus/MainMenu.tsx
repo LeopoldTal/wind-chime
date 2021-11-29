@@ -46,9 +46,7 @@ export const MainMenu: React.FunctionComponent = () => {
 		<div className="main-menu-screen">
 			<h1 className="main-title">Wind Chime</h1>
 			<h2 className="main-subtitle">A one-button, one-minute game</h2>
-			
-			{/* TODO: controls hint */}
-			
+
 			<menu className="menu-list">
 				{MENU_LINKS.map(({ to, label }, index) => (
 					<li
@@ -60,6 +58,10 @@ export const MainMenu: React.FunctionComponent = () => {
 					</li>
 				))}
 			</menu>
+
+			<footer>
+				Click anywhere or press any key to switch between options. Hold to select.
+			</footer>
 		</div>
 	);
 };

@@ -63,7 +63,6 @@ export const Game: React.FunctionComponent = () => {
 					onPhraseEnd={onPhraseEnd}
 				/>
 			)}
-			{/* TODO: controls hint */}
 		</div>
 	);
 };
@@ -80,6 +79,9 @@ const ScenePhraseScreen: React.FunctionComponent<ScenePhraseScreenProps> = ({
 		<div className="scene-screen">
 			<p>{text}</p>
 			<SoundPlayer soundFileName={soundFile} onEnd={onPhraseEnd} />
+			<footer>
+				Tap to ring the chimes.
+			</footer>
 		</div>
 	)
 );
@@ -93,5 +95,8 @@ const EndingScreen: React.FunctionComponent<Ending> = ({
 		<h1>{title}</h1>
 		<p>{text}</p>
 		<SoundPlayer soundFileName={soundFile} />
+		<footer>
+			Hold to go back to the menu.
+		</footer>
 	</div>
 );
