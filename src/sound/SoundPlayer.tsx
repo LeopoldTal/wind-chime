@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const getSoundUrl = (soundFileName: string) => `/sound-voice/${soundFileName}.mp3`;
+const getSoundUrl = (soundFileName: string) => `./sound-voice/${soundFileName}.mp3`;
 
 type SoundPlayerProps = {
 	soundFileName: string;

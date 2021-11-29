@@ -82,7 +82,7 @@ export const InputListener: React.FunctionComponent = () => {
 		<div className={`input-listener ${pressed ? 'input-listener-pressed' : ''}`}>
 			<img
 				alt={pressed ? 'press' : ''}
-				src="/chimes.png"
+				src="./chimes.png"
 			/>
 		</div>
 	);

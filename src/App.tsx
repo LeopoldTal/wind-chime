@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ActionContextProvider } from './ActionContext/ActionContext';
 import { Credits } from './Credits/Credits';
 import { Game } from './Game/Game';
@@ -14,6 +13,7 @@ const App: React.FunctionComponent = () => (
 				<Route path="/" element={<MainMenu />} />
 				<Route path="/play" element={<Game />} />
 				<Route path="/credits" element={<Credits />} />
+				<Route path="*" element={<MainMenu />} />
 			</Routes>
 		</BrowserRouter>
 		<InputListener />
