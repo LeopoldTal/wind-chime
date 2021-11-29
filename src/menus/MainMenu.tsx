@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ActionContext } from '../ActionContext/ActionContext';
+import { playChime } from '../sound/sound-service';
 import './MainMenu.css';
 import './menus.css';
 
@@ -11,6 +12,13 @@ type MenuRoute = {
 
 const MENU_LINKS: MenuRoute[] = [
 	{ to: '/play', label: 'Start game' },
+	/* TODO: controls for:
+	- text speed
+	- press duration
+	- voice volume
+	- sfx volume
+	- options voiceover
+	*/
 	{ to: '/credits', label: 'Credits' },
 ];
 
@@ -27,6 +35,7 @@ export const MainMenu: React.FunctionComponent = () => {
 	const openLink = useCallback(() => {
 		const { to } = MENU_LINKS[selectedIndex];
 		navigate(to);
+		playChime();
 	}, [selectedIndex, navigate]);
 
 	useEffect(() => {
@@ -36,7 +45,7 @@ export const MainMenu: React.FunctionComponent = () => {
 	return (
 		<div className="main-menu-screen">
 			<h1 className="main-title">Wind Chime</h1>
-			<h2 className="main-subtitle">A one-button game</h2>
+			<h2 className="main-subtitle">A one-button, one-minute game</h2>
 			
 			{/* TODO: controls hint */}
 			
